@@ -1,62 +1,40 @@
 import React from "react";
-import { ScrollView, View, Text, StyleSheet } from "react-native";
+import { Text, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
 
-export default function App() {
+export default function ClinicDashboard({ navigation }) {
   return (
     <ScrollView style={styles.container}>
-      {/* Header */}
-      <Text style={styles.title}>The Business Model Canvas</Text>
-      <Text style={styles.subtitle}>Date: 08/27/2025 | Version: 1.0</Text>
+      <Text style={styles.title}>Clinic App Dashboard</Text>
 
-      {/* Grid Layout */}
-      <View style={styles.row}>
-        <View style={styles.box}>
-          <Text style={styles.heading}>Key Partners</Text>
-          <Text>• Clinics</Text>
-          <Text>• IT support</Text>
-        </View>
-        <View style={styles.box}>
-          <Text style={styles.heading}>Key Activities</Text>
-          <Text>• Basic app development</Text>
-          <Text>• User support</Text>
-        </View>
-        <View style={styles.box}>
-          <Text style={styles.heading}>Value Propositions</Text>
-          <Text>• Simple appointment booking</Text>
-          <Text>• Real-time slot availability</Text>
-        </View>
-      </View>
+      {/* Appointment Booking */}
+      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Booking")}>
+        <Text style={styles.cardTitle}>📅 Book Appointment</Text>
+        <Text style={styles.cardDesc}>Simple appointment booking with real-time slots</Text>
+      </TouchableOpacity>
 
-      <View style={styles.row}>
-        <View style={styles.box}>
-          <Text style={styles.heading}>Key Resources</Text>
-          <Text>• App development team</Text>
-          <Text>• Cloud hosting</Text>
-        </View>
-        <View style={styles.box}>
-          <Text style={styles.heading}>Customer Relationships</Text>
-          <Text>• Self-service app</Text>
-          <Text>• Automated reminders</Text>
-        </View>
-        <View style={styles.box}>
-          <Text style={styles.heading}>Customer Segments</Text>
-          <Text>• Patients</Text>
-          <Text>• Clinics</Text>
-        </View>
-      </View>
+      {/* Reminders */}
+      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Reminders")}>
+        <Text style={styles.cardTitle}>🔔 Reminders</Text>
+        <Text style={styles.cardDesc}>Get automated reminders for appointments</Text>
+      </TouchableOpacity>
 
-      <View style={styles.row}>
-        <View style={styles.box}>
-          <Text style={styles.heading}>Cost Structure</Text>
-          <Text>• Development costs</Text>
-          <Text>• Basic support costs</Text>
-        </View>
-        <View style={styles.box}>
-          <Text style={styles.heading}>Revenue Streams</Text>
-          <Text>• Commission per booking</Text>
-          <Text>• Clinic subscription</Text>
-        </View>
-      </View>
+      {/* Patient Management */}
+      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Patients")}>
+        <Text style={styles.cardTitle}>🧑 Patients</Text>
+        <Text style={styles.cardDesc}>Manage patient bookings and history</Text>
+      </TouchableOpacity>
+
+      {/* Clinic Management */}
+      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Clinics")}>
+        <Text style={styles.cardTitle}>👨‍⚕️ Clinics</Text>
+        <Text style={styles.cardDesc}>Clinic schedules and subscriptions</Text>
+      </TouchableOpacity>
+
+      {/* Payments */}
+      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("Payments")}>
+        <Text style={styles.cardTitle}>💳 Payments</Text>
+        <Text style={styles.cardDesc}>Commission & subscription plans</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
@@ -64,40 +42,32 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    padding: 10,
+    padding: 15,
+    backgroundColor: "#f5f5f5",
   },
   title: {
     fontSize: 22,
     fontWeight: "bold",
     textAlign: "center",
-    marginVertical: 10,
+    marginVertical: 15,
   },
-  subtitle: {
-    fontSize: 14,
-    textAlign: "center",
-    marginBottom: 20,
-    color: "gray",
-  },
-  row: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
+  card: {
+    backgroundColor: "#fff",
+    padding: 15,
+    borderRadius: 12,
     marginBottom: 15,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
   },
-  box: {
-    flex: 1,
-    minWidth: "30%",
-    margin: 5,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 10,
-    backgroundColor: "#f9f9f9",
-  },
-  heading: {
-    fontSize: 16,
+  cardTitle: {
+    fontSize: 18,
     fontWeight: "bold",
     marginBottom: 5,
+  },
+  cardDesc: {
+    fontSize: 14,
+    color: "#666",
   },
 });
